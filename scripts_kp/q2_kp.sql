@@ -9,3 +9,10 @@ group by playerid,height,teamid,player_name
 ORDER BY people.height
 LIMIT(1)
 
+SELECT playerid,(namefirst||' ' ||namelast )as player_name, name,height,teamid,sum(g_all)
+FROM people
+ JOIN appearances USING (playerid)
+ join teams using (teamid,yearid)
+group by playerid,height,teamid,player_name,name
+ORDER BY people.height
+LIMIT(1)
